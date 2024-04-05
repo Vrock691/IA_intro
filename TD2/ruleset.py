@@ -70,7 +70,7 @@ rules = [
     {
         "id":"x+y",
         "rule":"extern",
-        "response":"Voilà le résultat de votre adit",
+        "response":"Voilà le résultat de votre addition",
         "score":1,
         "fatal":False,
         "function": externalfunctions.Sum
