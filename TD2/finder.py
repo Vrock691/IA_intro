@@ -8,9 +8,9 @@ def findRule(prompt, rules):
     
     selectedRule = rules[0]
 
-    # On parcours la liste de régles disponibles
+    # On parcours la liste de règles disponibles
     for rule in rules:
-        # On compile le motif de la régle parcouru
+        # On compile le motif de la règle parcouru
         pattern = re.compile(rule["rule"])
 
         # On cherche le motif dans la chaine
