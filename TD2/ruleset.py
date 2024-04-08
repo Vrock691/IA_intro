@@ -21,7 +21,7 @@ rules = [
     },
     {
         "id": "Aurevoir",
-        "rule": "Au revoir .*",
+        "rule": "Au revoir",
         "response": "Ravi d'avoir pu vous aider",
         "score": 1,
         "fatal": True,
@@ -53,8 +53,8 @@ rules = [
     },
     {
         "id":"Division",
-        "rule":"Peut tu me faire une division ? .*",
-        "response":"Bien sûr !, tappez donc x/y",
+        "rule":"Peut tu me faire une division ?",
+        "response":"Bien sûr !, tappez donc x/y .*",
         "score":1,
         "fatal":False,
         "function":None,
@@ -73,6 +73,48 @@ rules = [
         "response":"Voilà le résultat de votre addition",
         "score":1,
         "fatal":False,
-        "function": externalfunctions.Sum
+        "function": externalfunctions.Sum,
+    },
+    {
+        "id":"Multiplication",
+        "rule":"Peut tu me faire une multiplication",
+        "response":"Bien sûr !, tapper donc x*y",
+        "score":1,
+        "fatal":False,
+        "function":None, 
+
+    },
+    {
+        "id":"x*y",
+        "rule":"x*y .*",
+        "response":"Voilà le résultat de votre multiplication",
+        "score":1,
+        "fatal":False,
+        "function": externalfunctions.Multiplication, 
+
+    },
+    {
+        "id":"Shojo",
+        "rule":"Explique moi ce qu'est un manga shojo",
+        "response":"",
+        "score":1,
+        "fatal":False,
+        "function":None, 
+    },
+    {
+        "id":"Shonen",
+        "rule":"Explique moi ce qu'est un manga shonen",
+        "response":"Un manga shonen est un des trois types de mangas qui existent et où l'intrigue principale suit un personnage (souvent masculin) dans une aventure pour atteindre un objectif.",
+        "score":1,
+        "fatal":False,
+        "function":None,
+    },
+    {
+        "id":"Seinen",
+        "rule":"Explique moi ce qu'est un manga seinen",
+        "response":"",
+        "score":1,
+        "fatal":False,
+        "function":None,
     },
 ]

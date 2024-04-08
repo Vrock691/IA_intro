@@ -4,7 +4,7 @@ import ruleset
 import finder
 import externalfunctions
 
-# On importe les régles
+# On importe les règles
 rules = ruleset.rules
 
 # On définis les variables globales au programme
@@ -16,7 +16,7 @@ while not fatal:
     # On demande le prompt de l'utilisateur
     userinput = input("> ")
 
-    # On cherche un motif à partir de la liste de régles
+    # On cherche un motif à partir de la liste de règles
     rule = finder.findRule(userinput, rules)
 
     # On envoie la réponse de la règle selectionnée
