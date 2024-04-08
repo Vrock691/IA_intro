@@ -14,7 +14,7 @@ def findRule(prompt, rules):
         pattern = re.compile(rule["rule"])
 
         # On cherche le motif dans la chaine
-        results = pattern.finditer(prompt)
+        results = pattern.finditer(prompt.lower())
 
         # On synthétises en liste les motifs trouvés
         positions = [result.span() for result in results]
