@@ -24,7 +24,7 @@ while not fatal:
 
     # On execute la fonction liée a la règle si elle existe
     if (rule['function'] != None):
-        print(rule['function']())
+        print(rule['function'](userinput))
     
     # On termine le programme si la commande est fatale
     if (rule['fatal']):
