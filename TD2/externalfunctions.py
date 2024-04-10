@@ -47,11 +47,5 @@ def RecordName(prompt):
     name = re.search(r"(?i)(?:je m'appelle|mon nom est|mon prénom est)\s+(\w+)", prompt).group(1)
     f = open("TD2/data.txt", "w")
     f.write(name)
-    f.close
-    return '> Bonjour '+ str(getName())
-
-def getName():
-    f = open("TD2/data.txt", "r")
-    name = f.read()
     f.close()
-    return name
+    return '> Bonjour '+ name
