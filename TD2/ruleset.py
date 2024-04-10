@@ -1,5 +1,10 @@
-import externalfunctions
 # On importe les fonctions nécéssaire à certaines règles 
+import externalfunctions
+def getName():
+    f = open("TD2/data.txt", "r")
+    name = f.read()
+    f.close()
+    return name
 
 # la liste des règles
 rules = [
@@ -24,7 +29,7 @@ rules = [
     {
         "id": "Aurevoir",
         "rule": "(au revoir)|(aurevoir)",
-        "response": "Ravi d'avoir pu vous aider " + str(externalfunctions.getName),
+        "response": "Ravi d'avoir pu vous aider " + str(getName()),
         "score": 1,
         "fatal": True,
         "function": None,
@@ -233,7 +238,7 @@ rules = [
     {
         "id":"name",
         "rule":".*(je m'appelle|mon nom est|mon prénom est).*",
-        "response":"",
+        "response":"J'enregistre votre prénom !",
         "score":3,
         "fatal":False,
         "function":externalfunctions.RecordName,

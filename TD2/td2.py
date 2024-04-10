@@ -1,18 +1,11 @@
 import pandas as pd
 import re
-import ruleset
 import finder
 import externalfunctions
-
-# On importe les règles
-rules = ruleset.rules
 
 # On définis les variables globales au programme
 userinput = ""
 fatal = False
-
-# On importe les variables enregistrés
-externalfunctions.getName()
 
 # Démarrage de la boucle 
 while not fatal:
@@ -20,7 +13,7 @@ while not fatal:
     userinput = input("> ")
 
     # On cherche un motif à partir de la liste de règles
-    rule = finder.findRule(userinput, rules)
+    rule = finder.findRule(userinput)
 
     # On envoie la réponse de la règle selectionnée
     print("> " + rule['response'])

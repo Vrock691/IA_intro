@@ -1,11 +1,16 @@
 import re
+import ruleset
 
-def findRule(prompt, rules):
+def findRule(prompt):
     """
     Cette fonction fouilles dans la liste de régles et va vérifier si 
     un motif est trouvé dans une chaine de caractères
     """
+
+    # On importe les règles
+    rules = ruleset.rules
     
+    # On selectionne la régle je ne sais pas par défaut
     selectedRule = rules[0]
 
     # On parcours la liste de règles disponibles

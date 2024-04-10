@@ -45,10 +45,7 @@ def Soustraction(prompt):
 
 def RecordName(prompt):
     name = re.search(r"(?i)(?:je m'appelle|mon nom est|mon prénom est)\s+(\w+)", prompt).group(1)
-    getName()
+    f = open("TD2/data.txt", "w")
+    f.write(name)
+    f.close()
     return '> Bonjour '+ name
-
-def getName():
-    f = open("TD2/data.txt", "r")
-    name = f.read()
-    return name
