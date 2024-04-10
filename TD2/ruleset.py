@@ -136,7 +136,7 @@ rules = [
     }, #fonctionne
     {
         "id":"consommation",
-        "rule":".*(quelle est|donne moi) la consommation de (burgers|burger|hamburgers|hamburger) annuelle des américains.*",
+        "rule":".*(quelle est|donne moi) la consommation de (burgers|burger|hamburgers|hamburger) annuelle (des américains|aux états-unis|en amérique).*",
         "response":"Les Américains consomment en moyenne 50 milliards de burgers par an.",
         "score":1,
         "fatal":False,
@@ -237,5 +237,21 @@ rules = [
         "score":3,
         "fatal":False,
         "function":externalfunctions.RecordName,
+    },
+    {
+        "id":"capitale",
+        "rule":".*(quelle|quelle ville) (est|est considérée comme) (la capitale|la ville principale|la ville la plus importante) (pour|du) (burger|burgers|hamburger|hamburgers).*",
+        "response":"La ville de Seymour, Wisconsin, est considérée comme la capitale du hamburger.",
+        "score":1,
+        "fatal":False,
+        "function":None,
+    },
+    {
+        "id":"burger king",
+        "rule":".*(quand|en quelle année|a quelle date) (a été crée|a été fondée|est apparue|sont apparu) (burger king|la chaîne burger king|l'entreprise burger king|les restaurants rapides burger king|les restaurants burger king).*",
+        "response":"Burger King, une des plus grandes chaînes de restauration rapide, a été fondée en 1954.",
+        "score":1,
+        "fatal":False,
+        "function":None,
     },
 ]
