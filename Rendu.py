@@ -195,7 +195,7 @@ ruleset = [
     }, 
     {
         "id":"sum",
-        "rule":"(?:fait|additionne) ([0-9]*) (?:plus|et) ([0-9]*).*",
+        "rule":"(?:fait|additionne) ([0-9]*) (?:plus|et|par) ([0-9]*).*",
         "response":"Bien j'additionne ces deux nombres",
         "score":1,
         "fatal":False,
@@ -203,7 +203,7 @@ ruleset = [
     }, 
     {
         "id":"moins",
-        "rule":"(?:fait|soustrait) ([0-9]*) (?:moins|et) ([0-9]*).*",
+        "rule":"(?:fait|soustrait) ([0-9]*) (?:moins|et|par) ([0-9]*).*",
         "response":"Bien je soustrait ces deux nombres",
         "score":1,
         "fatal":False,
@@ -211,7 +211,7 @@ ruleset = [
     }, 
     {
         "id":"multi",
-        "rule":"(?:fait|multiplie) ([0-9]*) (?:x|fois|et) ([0-9]*).*",
+        "rule":"(?:fait|multiplie) ([0-9]*) (?:x|fois|et|par) ([0-9]*).*",
         "response":"Bien je multiplie ces deux nombres",
         "score":1,
         "fatal":False,
@@ -219,7 +219,7 @@ ruleset = [
     }, 
     {
         "id":"quotient",
-        "rule":"(?:fait|divise) ([0-9]*) (?:/|divisé par|et) ([0-9]*).*",
+        "rule":"(?:fait|divise) ([0-9]*) (?:/|divisé par|et|par) ([0-9]*).*",
         "response":"Bien je divise ces deux nombres",
         "score":1,
         "fatal":False,
