@@ -4,6 +4,7 @@ import finder
 import externalfunctions
 
 # On définis les variables globales au programme
+userName = ""
 userinput = ""
 fatal = False
 
@@ -16,7 +17,7 @@ while not fatal:
     rule = finder.findRule(userinput)
 
     # On envoie la réponse de la règle selectionnée
-    print("> " + rule['response'])
+    print("> " + rule['response'].replace("%NAME%", userName))
 
     # On execute la fonction liée a la règle si elle existe
     if (rule['function'] != None):

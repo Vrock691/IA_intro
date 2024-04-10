@@ -1,13 +1,104 @@
-# On importe les fonctions nécéssaire à certaines règles 
-import externalfunctions
+import pandas as pd
+import re
+
+
+
+# On définis les variables globales au programme
+userName = ""
+userinput = ""
+fatal = False
+
+
+
+# On définie la fonction de reconnaissance de régles
+def findRule(prompt):
+    """
+    Cette fonction fouilles dans la liste de régles et va vérifier si 
+    un motif est trouvé dans une chaine de caractères
+    """
+
+    # On importe les règles
+    rules = ruleset
+    
+    # On selectionne la régle je ne sais pas par défaut
+    selectedRule = rules[0]
+
+    # On parcours la liste de règles disponibles
+    for rule in rules:
+        # On compile le motif de la règle parcouru
+        pattern = re.compile(rule["rule"])
+
+        # On cherche le motif dans la chaine
+        results = pattern.finditer(prompt.lower())
+
+        # On synthétises en liste les motifs trouvés
+        positions = [result.span() for result in results]
+
+        if (len(positions) > 0):
+            # Si un résultat ou plus est trouvé dans le prompt 
+            # on l'enregistre en tant que réponse selectionné
+            # On vérifie que la réponse précédemment enregistré n'a
+            # pas un score plus important, auxquel cas, on l'abandonne
+            if rule['score'] >= selectedRule['score']:
+                selectedRule = rule
+    
+    # On retourne la régle selectionnée
+    return selectedRule
+
+
+
+# Fonction de calculs dans les règles
+def Sum(prompt): 
+    matches = re.findall('([0-9]+)', prompt)
+    if len(matches) >= 2:
+        n1 = int(matches[0])
+        n2 = int(matches[1])
+        sum = n1+n2
+        return "> " + str(n1) + " + " + str(n2) + " = " + str(sum)
+    else:
+        return "Il me semble qu'il manque un nombre pour faire cet addition"
+    
+def Divide(prompt):
+    matches = re.findall('([0-9]+)', prompt)
+    if len(matches) >= 2:
+        n1 = int(matches[0])
+        n2 = int(matches[1])
+        if n1 and n2!=0:
+            return n1/n2
+        else:
+            return "Division par 0 impossible !"
+    else:
+        return "Division impossible, chiffre manquant"
+
+def Multiplication(prompt):
+    matches = re.findall('([0-9]+)', prompt)
+    if len(matches) >= 2:
+        n1 = int(matches[0])
+        n2 = int(matches[1])
+        prod = n1*n2
+        return "> " + str(n1) + " x " + str(n2) + " = " + str(prod)
+    else:
+        return "Il me semble qu'il manque un nombre pour faire cette multiplication"
+
+def Soustraction(prompt):
+    matches = re.findall('([0-9]+)', prompt)
+    if len(matches) >= 2:
+        n1 = int(matches[0])
+        n2 = int(matches[1])
+        dif = n1-n2
+        return "> " + str(n1) + " - " + str(n2) + " = " + str(dif)
+    else:
+        return "Il me semble qu'il manque un nombre pour faire cet addition"
+
+
 
 # la liste des règles
-rules = [
+ruleset = [
     # Règle par défaut quand le bot ne connais pas de réponse paramétrée
     { 
         "id": "Je sais pas",
         "rule": ".*",
-        "response": "Désolé, je n'ai pas compris votre demande.",
+        "response": "Désolé %NAME%, je n'ai pas compris votre demande.",
         "score": 0,
         "fatal": False,
         "function":None,
@@ -16,7 +107,7 @@ rules = [
     {
         "id": "Bonjour",
         "rule": "bonjour",
-        "response": "Bonjour, je suis votre spécialiste en burger, en quoi puis-je vous aider ?",
+        "response": "Bonjour %NAME%, je suis votre spécialiste en burger, en quoi puis-je vous aider ?",
         "score": 1,
         "fatal": False,
         "function": None,
@@ -39,9 +130,9 @@ rules = [
     }, 
     {
         "id":"apropos",
-        "rule":"(qu'est ce qu'|c'est quoi |qu'est ce que c'est |Qu'est ce que c'est qu')un (burger|hamburger).*",
+        "rule":"(?:(qu'est ce qu'|c'est quoi |qu'est ce que c'est |Qu'est ce que c'est qu')un (burger|hamburger).*)|(?:.*(ou|où) vient le (burger|hamburger).*)",
         "response":"Un hamburger, ou par aphérèse burger, est un sandwich d'origine allemande, composé de deux pains de forme ronde1 (bun) généralement garnis d'une galette de steak haché (généralement du bœuf) et de crudités, salade, tomate, oignon, cornichon (pickles) ainsi que de sauce. D'autres question à ce propos ?",
-        "score":1,
+        "score":4,
         "fatal":False,
         "function":None,
         
@@ -108,7 +199,7 @@ rules = [
         "response":"Bien j'additionne ces deux nombres",
         "score":1,
         "fatal":False,
-        "function":externalfunctions.Sum, 
+        "function":Sum, 
     }, 
     {
         "id":"moins",
@@ -116,7 +207,7 @@ rules = [
         "response":"Bien je soustrait ces deux nombres",
         "score":1,
         "fatal":False,
-        "function":externalfunctions.Soustraction, 
+        "function":Soustraction, 
     }, 
     {
         "id":"multi",
@@ -124,7 +215,7 @@ rules = [
         "response":"Bien je multiplie ces deux nombres",
         "score":1,
         "fatal":False,
-        "function":externalfunctions.Multiplication, 
+        "function":Multiplication, 
     }, 
     {
         "id":"quotient",
@@ -132,7 +223,7 @@ rules = [
         "response":"Bien je divise ces deux nombres",
         "score":1,
         "fatal":False,
-        "function":externalfunctions.Divide, 
+        "function":Divide, 
     }, 
     {
         "id":"consommation",
@@ -144,7 +235,7 @@ rules = [
     }, 
     {
         "id":"ventes",
-        "rule":".*(quel est|combien|donne moi)|(le montant des ventes|les recettes|de dollars|ont rapporté)|(la vente de burgers|burger|hamburgers|hamburgers)|(aux états-unis|en amérique).*",
+        "rule":".*(quel est|combien|donne moi) (le montant des ventes|les recettes|de dollars|ont rapporté) la vente de (burgers|burger|hamburgers|hamburgers) (aux états-unis|en amérique).*",
         "response":"Les ventes de burgers aux États-Unis ont atteint plus de 100 milliards de dollars.",
         "score":1,
         "fatal":False,
@@ -233,10 +324,10 @@ rules = [
     {
         "id":"name",
         "rule":".*(je m'appelle|mon nom est|mon prénom est).*",
-        "response":"J'enregistre votre prénom !",
+        "response":"J'enregistre votre prénom %NAME%! Posez-moi des questions sur l'histoire du hamburger.",
         "score":3,
         "fatal":False,
-        "function":externalfunctions.RecordName,
+        "function":None,
     },
     {
         "id":"capitale",
@@ -255,3 +346,31 @@ rules = [
         "function":None,
     },
 ]
+
+
+
+# Print de notre premier message
+print("Bonjour, je suis Clint, votre spécialiste dans l'histoire du burger, comment vous appelez-vous ?")
+
+# Démarrage de la boucle du chatbot
+while not fatal:
+    # On demande le prompt de l'utilisateur
+    userinput = input("> ")
+
+    # On cherche un motif à partir de la liste de règles
+    rule = findRule(userinput)
+
+    # Si la requette concerne le prénom, on met à jour la variable
+    if rule["id"] == "name":
+        userName = re.search(r"(?i)(?:je m'appelle|mon nom est|mon prénom est)\s+(\w+)", userinput).group(1)
+
+    # On envoie la réponse de la règle selectionnée
+    print(rule['response'].replace("%NAME%", userName))
+
+    # On execute la fonction liée a la règle si elle existe
+    if (rule['function'] != None):
+        print(rule['function'](userinput))
+    
+    # On termine le programme si la commande est fatale
+    if (rule['fatal']):
+        fatal = True
