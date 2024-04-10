@@ -12,7 +12,7 @@ rules = [
         "fatal": False,
         "function": externalfunctions.RecordNewResponse,
     },
-    # Autres régles
+    # Autres règles
     {
         "id": "Bonjour",
         "rule": "bonjour",
@@ -20,7 +20,7 @@ rules = [
         "score": 1,
         "fatal": False,
         "function": None,
-    },
+    }, #fonctionne
     {
         "id": "Aurevoir",
         "rule": "(au revoir)|(aurevoir)",
@@ -28,7 +28,7 @@ rules = [
         "score": 1,
         "fatal": True,
         "function": None,
-    },
+    }, #fonctionne
     {
         "id": "Salut",
         "rule": "(salut|hello)",
@@ -36,7 +36,7 @@ rules = [
         "score": 1,
         "fatal": False,
         "function": None,
-    },
+    }, #fonctionne
     {
         "id":"apropos",
         "rule":"(qu'est ce qu'|c'est quoi |qu'est ce que c'est |Qu'est ce que c'est qu')un (burger|hamburger).*",
@@ -44,6 +44,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None,
+        #fonctionne
     },
     {
         "id":"date",
@@ -52,15 +53,15 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None,
-    },
+    }, #ne fonctionne pas ?
     {
         "id":"ethymo",
-        "rule":".*hétymologie (du mot|de) (burger|hamburger).*",
+        "rule":".*étymologie (du mot|de) (burger|hamburger).*",
         "response":"Hamburger fait référence à la ville de Hambourg, en Allemagne. Il n'existe aucun rapport étymologique entre le hamburger et le jambon (en anglais : ham), puisque le nom de la ville de Hambourg a une étymologie différente. Une question sur la date d'invention du burger ?",
         "score":1,
         "fatal":False,
         "function":None,
-    },
+    }, #fonctionne
     {
         "id":"découverte",
         "rule":".*(donne moi un (exemple de|)|est le) (burger|hamburger) (le plus |)connu.*",
@@ -68,7 +69,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None,
-    },
+    }, #fontionne 
     {
         "id":"original",
         "rule":".*(donne moi un (exemple de|)|est le) (burger|hamburger) (le plus |)(original|spécial|innatendu).*",
@@ -76,7 +77,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None, 
-    },
+    }, #fonctionne
     {
         "id":"biggest",
         "rule":".*(donne moi un (exemple de|)|est le) (burger|hamburger) (le plus |)(grand|gros|énorme).*",
@@ -84,7 +85,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None, 
-    },
+    }, #fonctionne 
     {
         "id":"where",
         "rule":".*le (tout|) premier (restaurant|resto|lieu|lieux) à (servir|préparer|cuisiner|proposer) (des|un|le|les) (hamburger|burger|hamburgers|burgers).*",
@@ -92,7 +93,7 @@ rules = [
         "score":2,
         "fatal":False,
         "function":None, 
-    },
+    }, #ne fonctionne pas ?
     {
         "id":"firstmcdo",
         "rule":".*le (tout|) premier (mcdo|mc'do|mcdonald|mcdonalds|mcdonald's).*",
@@ -100,7 +101,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None, 
-    },
+    }, #fonctionne 
     {
         "id":"sum",
         "rule":"(?:fait|additionne) ([0-9]*) (?:"+"|plus|et) ([0-9]*).*",
@@ -108,5 +109,101 @@ rules = [
         "score":1,
         "fatal":False,
         "function":externalfunctions.Sum, 
+    }, #fonctionne
+    {
+        "id":"consommation",
+        "rule":".*(quelle est|donne moi) la consommation de (burgers|burger|hamburgers|hamburger) annuelle des américains.*",
+        "response":"Les Américains consomment en moyenne 50 milliards de burgers par an.",
+        "score":1,
+        "fatal":False,
+        "function":None,
+    }, #fonctionne 
+    {
+        "id":"ventes",
+        "rule":".*(quel est|donne moi|combien) de dollars les ventes de (burgers|burger|hamburger|hamburgers)(le montant|ont rapporté) aux états-unis.*",
+        "response":"Les ventes de burgers aux États-Unis ont atteint plus de 100 milliards de dollars.",
+        "score":1,
+        "fatal":False,
+        "function":None,
+    }, #ne fonctionne pas
+    {
+        "id":"journée",
+        "rule":".*(quelle est|donne moi) la date de la journée nationale du (burger|hamburger).*",
+        "response":"Le 28 mai est la journée nationale du burger aux états-Unis.",
+        "score":1,
+        "fatal":False,
+        "function":None,
+    }, #fonctionne 
+    {
+        "id":"record",
+        "rule":".*(quel est|donne moi) le record du plus grand nombre de (burgers|hamburgers|burger|hamburger) (mangés|avalés) en (quelques minutes|très peu de temps|peu de temps).*",
+        "response":"Le record de consommation de burgers est de 26 hamburgers en 10 minutes, établi lors du concours annuel de l'Association des mangeurs de hot-dogs.",
+        "score":1,
+        "fatal":False,
+        "function":None,
+    }, #fonctionne
+    {
+        "id":"garniture",
+        "rule":".*(quel est|de quel type) (la garniture|d'aliments) (des|les) (burgers|burgers|hamburgers|hamburgers) (sont t'il remplis|remplis|garnis|constitués).*",
+        "response":"Les burgers peuvent être garnis de divers ingrédients tels que des œufs, du bacon, des avocats, des oignons, des champignons, et bien d'autres encore.",
+        "score":1,
+        "fatal":False,
+        "function":None,
+    }, #fonctionne 
+    {
+        "id":"cuisson",
+        "rule":".*quelles sont les (différentes façons|différentes manières|méthodes|façons|manières) (de|pour) (cuire|cuisson) des (burgers|burger|hamburger|hamburgers).*",
+        "response":"Les burgers peuvent être cuits de différentes manières, notamment grillés, saisis, frits ou cuits au barbecue.",
+        "score":1,
+        "fatal":False,
+        "function":None,
+    }, #fonctionne 
+    {
+        "id":"japon",
+        "rule":".*(comment|donne moi) (un|une) (exemple|variation) de (burger|burgers|hamburgers|hamburger) (qui existe|présente) (dans|à) (un autre pays|un pays étranger|l'étranger|en asie).*",
+        "response":"Au Japon, les burgers peuvent être garnis de tempura, de wasabi ou même de ramen.",
+        "score":1,
+        "fatal":False,
+        "function":None,
+    },
+    {
+        "id":"nvelle zelande",
+        "rule":".*(comment|donne moi) (un|une) (exemple|variation) de (burger|burgers|hamburgers|hamburger) (qui existe|présente) (dans|à) (un autre pays|un pays étranger|l'étranger|un pays du sud).*",
+        "response":"En Nouvelle-Zélande, un burger est souvent garni d'un œuf frit et d'une tranche de betterave.",
+        "score":2,
+        "fatal":False,
+        "function":None,
+    },
+    {
+        "id":"sauce",
+        "rule":".*(est t'il possible de|peut on) (remplir|garnir) (nos|des|les|dans) (burgers|burger|hamburger|hamburgers) (de|d'une|une) (sauces|sauce spéciale|sauce.*)",
+        "response":"En effet, certains burgers sont garnis de sauces spéciales, comme la sauce barbecue, la mayonnaise épicée ou le ketchup maison.",
+        "score":1,
+        "fatal":False,
+        "function":None,
+    }, #fonctionne 
+    {
+        "id":"sucre",
+        "rule":".*(peut on|est il possible) (mettre|garnir|de mettre|de garnir) (des choses sucrées|de choses sucrées|de sucreries) (les|des|dans) (burgers|burger|hamburgers|hamburgers).*",
+        "response":"Certains burgers sont garnis de condiments et d'ingrédients sucrés, comme le bacon caramélisé ou la confiture de figues, créant un mélange de saveurs sucrées et salées.",
+        "score":1,
+        "fatal":False,
+        "function":None,
+    },
+    {
+        "id":"personalisation",
+        "rule":".*(peut on|est il possible de) (modifier|choisir|changer|personnaliser) (la|les) (composition|recette|ingrédients|éléments) (de son|d'un|du) (burger|burgers|hamburgers|hamburgers).*",
+        "response":"En effet, les burgers sont souvent personnalisables, permettant aux clients de choisir leurs garnitures préférées parmi une liste d'options.",
+        "score":1,
+        "fatal":False,
+        "function":None,
+    },
+    {
+        "id":"vegetarien",
+        "rule":".*(quand|a quelle date|en quelle année) (a été inventé|est apparu|a vu le jour) (le burger végétarien|le premier burger végétarien).*",
+        "response":"Le premier hamburger végétarien a été inventé en 1981 par Gregory Sams.",
+        "score":1,
+        "fatal":False,
+        "function":None,
     },
 ]
