@@ -10,7 +10,7 @@ rules = [
         "response": "Désolé, je ne sais pas, dite moi ce que vous souhaitez que je réponde dans ce cas.",
         "score": 0,
         "fatal": False,
-        "function": externalfunctions.RecordNewResponse,
+        "function":None,
     },
     # Autres règles
     {
@@ -24,7 +24,7 @@ rules = [
     {
         "id": "Aurevoir",
         "rule": "(au revoir)|(aurevoir)",
-        "response": "Ravi d'avoir pu vous aider.",
+        "response": "Ravi d'avoir pu vous aider " + str(externalfunctions.getName),
         "score": 1,
         "fatal": True,
         "function": None,
@@ -104,11 +104,35 @@ rules = [
     }, #fonctionne 
     {
         "id":"sum",
-        "rule":"(?:fait|additionne) ([0-9]*) (?:"+"|plus|et) ([0-9]*).*",
+        "rule":"(?:fait|additionne) ([0-9]*) (?:plus|et) ([0-9]*).*",
         "response":"Bien j'additionne ces deux nombres",
         "score":1,
         "fatal":False,
         "function":externalfunctions.Sum, 
+    }, #fonctionne
+    {
+        "id":"moins",
+        "rule":"(?:fait|soustrait) ([0-9]*) (?:moins|et) ([0-9]*).*",
+        "response":"Bien je soustrait ces deux nombres",
+        "score":1,
+        "fatal":False,
+        "function":externalfunctions.Soustraction, 
+    }, #fonctionne
+    {
+        "id":"multi",
+        "rule":"(?:fait|multiplie) ([0-9]*) (?:x|fois|et) ([0-9]*).*",
+        "response":"Bien je multiplie ces deux nombres",
+        "score":1,
+        "fatal":False,
+        "function":externalfunctions.Multiplication, 
+    }, #fonctionne
+    {
+        "id":"quotient",
+        "rule":"(?:fait|divise) ([0-9]*) (?:/|divisé par|et) ([0-9]*).*",
+        "response":"Bien je divise ces deux nombres",
+        "score":1,
+        "fatal":False,
+        "function":externalfunctions.Divide, 
     }, #fonctionne
     {
         "id":"consommation",
@@ -205,5 +229,13 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None,
+    }, 
+    {
+        "id":"name",
+        "rule":".*(je m'appelle|mon nom est|mon prénom est).*",
+        "response":"",
+        "score":3,
+        "fatal":False,
+        "function":externalfunctions.RecordName,
     },
 ]

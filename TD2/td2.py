@@ -11,6 +11,9 @@ rules = ruleset.rules
 userinput = ""
 fatal = False
 
+# On importe les variables enregistrés
+externalfunctions.getName()
+
 # Démarrage de la boucle 
 while not fatal:
     # On demande le prompt de l'utilisateur

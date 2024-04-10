@@ -43,5 +43,12 @@ def Soustraction(prompt):
     else:
         return "Il me semble qu'il manque un nombre pour faire cet addition"
 
-def RecordNewResponse(prompt):
-    return "Enregistré"
+def RecordName(prompt):
+    name = re.search(r"(?i)(?:je m'appelle|mon nom est|mon prénom est)\s+(\w+)", prompt).group(1)
+    getName()
+    return '> Bonjour '+ name
+
+def getName():
+    f = open("TD2/data.txt", "r")
+    name = f.read()
+    return name
