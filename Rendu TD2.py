@@ -1,3 +1,7 @@
+# Valentin MARY | valentin.mary@univ-lyon2.fr | Vrock691@github.com
+# Camille DEHEN | camille.dehen@univ-lyon2.fr | nezuraa@github.com
+
+
 import pandas as pd
 import re
 
