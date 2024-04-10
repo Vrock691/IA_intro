@@ -1,7 +1,7 @@
 # On importe les fonctions nécéssaire à certaines règles 
 import externalfunctions
 def getName():
-    f = open("TD2/data.txt", "r")
+    f = open("IA_intro\TD2\data.txt", "r")
     name = f.read()
     f.close()
     return name
@@ -202,7 +202,7 @@ rules = [
         "score":2,
         "fatal":False,
         "function":None,
-    },
+    }, 
     {
         "id":"sauce",
         "rule":".*(est t'il possible de|peut on) (remplir|garnir) (nos|des|les|dans) (burgers|burger|hamburger|hamburgers) (de|d'une|une) (sauces|sauce spéciale|sauce.*)",
