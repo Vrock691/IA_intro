@@ -25,7 +25,7 @@ rules = [
         "score": 1,
         "fatal": False,
         "function": None,
-    }, #fonctionne
+    }, 
     {
         "id": "Aurevoir",
         "rule": "(au revoir)|(aurevoir)",
@@ -33,7 +33,7 @@ rules = [
         "score": 1,
         "fatal": True,
         "function": None,
-    }, #fonctionne
+    }, 
     {
         "id": "Salut",
         "rule": "(salut|hello)",
@@ -41,7 +41,7 @@ rules = [
         "score": 1,
         "fatal": False,
         "function": None,
-    }, #fonctionne
+    }, 
     {
         "id":"apropos",
         "rule":"(qu'est ce qu'|c'est quoi |qu'est ce que c'est |Qu'est ce que c'est qu')un (burger|hamburger).*",
@@ -49,16 +49,16 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None,
-        #fonctionne
+        
     },
     {
         "id":"date",
-        "rule":".* (année est (apparu|inventé)|(de quand date)|(date (d'invention|de création|d'apparition))) (du|le) (burger|hamburger).*",
+        "rule":".*(donne moi)|(quelle est) l'année (d'apparition|d'invention)|(de quand date)|(date (d'invention|de création|d'apparition))|(du|le) (burger|hamburger).*",
         "response":"Le burger est inventé en 1758 en Allemagne à Hambourg. N'hésitez pas à me poser des questions sur l'hétymologie du mot hamburger.",
         "score":1,
         "fatal":False,
         "function":None,
-    }, #ne fonctionne pas ?
+    }, 
     {
         "id":"ethymo",
         "rule":".*étymologie (du mot|de) (burger|hamburger).*",
@@ -66,7 +66,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None,
-    }, #fonctionne
+    }, 
     {
         "id":"découverte",
         "rule":".*(donne moi un (exemple de|)|est le) (burger|hamburger) (le plus |)connu.*",
@@ -74,7 +74,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None,
-    }, #fontionne 
+    }, 
     {
         "id":"original",
         "rule":".*(donne moi un (exemple de|)|est le) (burger|hamburger) (le plus |)(original|spécial|innatendu).*",
@@ -82,7 +82,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None, 
-    }, #fonctionne
+    }, 
     {
         "id":"biggest",
         "rule":".*(donne moi un (exemple de|)|est le) (burger|hamburger) (le plus |)(grand|gros|énorme).*",
@@ -90,23 +90,23 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None, 
-    }, #fonctionne 
+    }, 
     {
         "id":"where",
-        "rule":".*le (tout|) premier (restaurant|resto|lieu|lieux) à (servir|préparer|cuisiner|proposer) (des|un|le|les) (hamburger|burger|hamburgers|burgers).*",
+        "rule":".*quel est le (premier|tout premier)|(restaurant|resto|lieu|lieux) à (servir|préparer|cuisiner|proposer) (des|un|le|les) (hamburger|burger|hamburgers|burgers).*",
         "response":"En 1904, Fletcher Davis originaire d’Athens au Texas, vend des sandwichs au steak de Hambourg à la foire de Saint-Louis. C’est un véritable succès qui semble marquer la vraie naissance du hamburger actuel. C'était le premier lieu à servir des hamburger comme on l'entend aujourd'hui.",
         "score":2,
         "fatal":False,
         "function":None, 
-    }, #ne fonctionne pas ?
+    }, 
     {
         "id":"firstmcdo",
-        "rule":".*le (tout|) premier (mcdo|mc'do|mcdonald|mcdonalds|mcdonald's).*",
+        "rule":".*(quand|quelle est la date)|(ouvre|a ouvert|d'ouverture)|(le|du)|(tout premier|premier)|(mcdo|mc'do|mcdonald|mcdonalds|mcdonald's).*",
         "response":"Le premier McDonald's ouvre en 1955 dans la banlieue de Chicago, Illinois.",
         "score":1,
         "fatal":False,
         "function":None, 
-    }, #fonctionne 
+    }, 
     {
         "id":"sum",
         "rule":"(?:fait|additionne) ([0-9]*) (?:plus|et) ([0-9]*).*",
@@ -114,7 +114,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":externalfunctions.Sum, 
-    }, #fonctionne
+    }, 
     {
         "id":"moins",
         "rule":"(?:fait|soustrait) ([0-9]*) (?:moins|et) ([0-9]*).*",
@@ -122,7 +122,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":externalfunctions.Soustraction, 
-    }, #fonctionne
+    }, 
     {
         "id":"multi",
         "rule":"(?:fait|multiplie) ([0-9]*) (?:x|fois|et) ([0-9]*).*",
@@ -130,7 +130,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":externalfunctions.Multiplication, 
-    }, #fonctionne
+    }, 
     {
         "id":"quotient",
         "rule":"(?:fait|divise) ([0-9]*) (?:/|divisé par|et) ([0-9]*).*",
@@ -138,7 +138,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":externalfunctions.Divide, 
-    }, #fonctionne
+    }, 
     {
         "id":"consommation",
         "rule":".*(quelle est|donne moi) la consommation de (burgers|burger|hamburgers|hamburger) annuelle (des américains|aux états-unis|en amérique).*",
@@ -146,15 +146,15 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None,
-    }, #fonctionne 
+    }, 
     {
         "id":"ventes",
-        "rule":".*(quel est|donne moi|combien) de dollars les ventes de (burgers|burger|hamburger|hamburgers)(le montant|ont rapporté) aux états-unis.*",
+        "rule":".*(quel est|combien|donne moi)|(le montant des ventes|les recettes|de dollars|ont rapporté)|(la vente de burgers|burger|hamburgers|hamburgers)|(aux états-unis|en amérique).*",
         "response":"Les ventes de burgers aux États-Unis ont atteint plus de 100 milliards de dollars.",
         "score":1,
         "fatal":False,
         "function":None,
-    }, #ne fonctionne pas
+    }, 
     {
         "id":"journée",
         "rule":".*(quelle est|donne moi) la date de la journée nationale du (burger|hamburger).*",
@@ -162,7 +162,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None,
-    }, #fonctionne 
+    }, 
     {
         "id":"record",
         "rule":".*(quel est|donne moi) le record du plus grand nombre de (burgers|hamburgers|burger|hamburger) (mangés|avalés) en (quelques minutes|très peu de temps|peu de temps).*",
@@ -170,7 +170,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None,
-    }, #fonctionne
+    }, 
     {
         "id":"garniture",
         "rule":".*(quel est|de quel type) (la garniture|d'aliments) (des|les) (burgers|burgers|hamburgers|hamburgers) (sont t'il remplis|remplis|garnis|constitués).*",
@@ -178,7 +178,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None,
-    }, #fonctionne 
+    }, 
     {
         "id":"cuisson",
         "rule":".*quelles sont les (différentes façons|différentes manières|méthodes|façons|manières) (de|pour) (cuire|cuisson) des (burgers|burger|hamburger|hamburgers).*",
@@ -186,20 +186,20 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None,
-    }, #fonctionne 
+    }, 
     {
         "id":"japon",
-        "rule":".*(comment|donne moi) (un|une) (exemple|variation) de (burger|burgers|hamburgers|hamburger) (qui existe|présente) (dans|à) (un autre pays|un pays étranger|l'étranger|en asie).*",
+        "rule":".*donne moi (un|une) (exemple|variation) de (burger|burgers|hamburgers|hamburger) (qui existe|présente|présent) (dans|à) (un autre pays|un pays étranger|l'étranger|en asie).*",
         "response":"Au Japon, les burgers peuvent être garnis de tempura, de wasabi ou même de ramen.",
-        "score":1,
+        "score":2,
         "fatal":False,
         "function":None,
     },
     {
         "id":"nvelle zelande",
-        "rule":".*(comment|donne moi) (un|une) (exemple|variation) de (burger|burgers|hamburgers|hamburger) (qui existe|présente) (dans|à) (un autre pays|un pays étranger|l'étranger|un pays du sud).*",
+        "rule":".*donne moi (un|une) (exemple|variation) de (burger|burgers|hamburgers|hamburger) (qui existe|présente|présent) (dans|à) (un autre pays|un pays étranger|l'étranger|un pays du sud).*",
         "response":"En Nouvelle-Zélande, un burger est souvent garni d'un œuf frit et d'une tranche de betterave.",
-        "score":2,
+        "score":1,
         "fatal":False,
         "function":None,
     }, 
@@ -210,7 +210,7 @@ rules = [
         "score":1,
         "fatal":False,
         "function":None,
-    }, #fonctionne 
+    }, 
     {
         "id":"sucre",
         "rule":".*(peut on|est il possible) (mettre|garnir|de mettre|de garnir) (des choses sucrées|de choses sucrées|de sucreries) (les|des|dans) (burgers|burger|hamburgers|hamburgers).*",
