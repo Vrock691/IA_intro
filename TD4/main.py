@@ -46,11 +46,6 @@ def est_autorisee(position):
         rep = False
     return rep
 
-def prochaine_pos(a_explorer,deja_explorer):
-    for positions in get_positions_possibles(aventurier):
-            if est_autorisee(positions) and positions not in deja_explorer:
-                a_explorer.append(positions)
-    
 
 
 def start():
@@ -60,7 +55,15 @@ def start():
     while touch!='Q':
         touch = str(input("Choisissez une action : "))
         print(print_map(map, aventurier, joyau))
+        for positions in get_positions_possibles(aventurier):
+            if est_autorisee(positions) and positions not in deja_explorer:
+                a_explorer.append(positions)
+        if len(a_explorer) >0:
+            aventurier['position']=a_explorer[0]
+            deja_explorer.append(a_explorer[0])
+            a_explorer.pop(0)
+        else:
+            print("On l'a trouvé !")
+            break
         
-        
-    
 start()
