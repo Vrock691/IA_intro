@@ -50,7 +50,7 @@ def prochaine_pos(a_explorer,deja_explorer):
     for positions in get_positions_possibles(aventurier):
             if est_autorisee(positions) and positions not in deja_explorer:
                 a_explorer.append(positions)
-    return a_explorer
+    
 
 
 def start():
