@@ -1,5 +1,10 @@
 import pandas as pd
 
+# Création des variables nécéssaire à la création de la table
+attributes = ["name","green","root","flower","fruit",
+              "leaf","seed","aromatic","tuber",
+              "bulb","stems","white","orange","season"]
+
 def generateDataset(rawDatasetPath):
     '''
     definition: Cette fonction converti le fichier .data en table pandas
@@ -7,10 +12,6 @@ def generateDataset(rawDatasetPath):
     output: Table panda
     '''
 
-    # Création des variables nécéssaire à la création de la table
-    attributes = ["name","green","root","flower","fruit",
-                  "leaf","seed","aromatic","tuber",
-                  "bulb","stems","white","orange","season"]
     parsedInstancesName = []
     parsedValues = []
     

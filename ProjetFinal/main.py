@@ -33,7 +33,9 @@ while (prompt == ""):
         results = pattern.finditer(prompt.lower())
         positions = [result.span() for result in results]
         if (len(positions) > 0):
-            print("ok")
+            alreadyAskedQuestions.append(question)
+            alreadyReviewedAttributes.append(question['attribute'])
+            newdataset = dataset.query()
 
     # Fin de la boucle
     prompt = ""
