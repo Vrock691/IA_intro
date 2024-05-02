@@ -30,4 +30,42 @@ questionsAvailables = [
             },
         },
     },
+    {
+        "id": 2,
+        "message": "Votre légume est-il majoritairement vert ?",
+        "attribute": "green",
+        "responsesAvailables": {
+            "yes|oui": {
+                "query": "green == 1",
+                "drop": None,
+                "eliminate": [2],
+                "fatal": False,
+            },
+            "no|non": {
+                "query": "green == 0",
+                "drop": None,
+                "eliminate": [2],
+                "fatal": False,
+            },
+        },
+    },
+    {
+        "id": 3,
+        "message": "Votre légume est-il une racine ?",
+        "attribute": "root",
+        "responsesAvailables": {
+            "yes|oui": {
+                "query": "root == 1",
+                "drop": None,
+                "eliminate": [2],
+                "fatal": False,
+            },
+            "no|non": {
+                "query": "root == 0",
+                "drop": None,
+                "eliminate": [2],
+                "fatal": False,
+            },
+        },
+    },
 ]
