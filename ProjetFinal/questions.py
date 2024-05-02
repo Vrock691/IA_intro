@@ -57,13 +57,32 @@ questionsAvailables = [
             "yes|oui": {
                 "query": "root == 1",
                 "drop": None,
-                "eliminate": [2],
+                "eliminate": [3],
                 "fatal": False,
             },
             "no|non": {
                 "query": "root == 0",
                 "drop": None,
-                "eliminate": [2],
+                "eliminate": [3],
+                "fatal": False,
+            },
+        },
+    },
+    {
+        "id": 4,
+        "message": "Votre légume est-il une fleur ?",
+        "attribute": "flower",
+        "responsesAvailables": {
+            "yes|oui": {
+                "query": "flower == 1",
+                "drop": None,
+                "eliminate": [4],
+                "fatal": False,
+            },
+            "no|non": {
+                "query": "flower == 0",
+                "drop": None,
+                "eliminate": [4],
                 "fatal": False,
             },
         },
