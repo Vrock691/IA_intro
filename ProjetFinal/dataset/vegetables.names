@@ -38,8 +38,21 @@
 
 7. Attribute Information: (name of attribute and type of value domain)
    1. vegetable name:      Unique for each instance
-   2. hair		Boolean
-   3. feathers		Boolean
+   2. green		Boolean
+   3. root		Boolean
+   4. legumesfleurs Boolean
+   5. legumesfruits Boolean
+   6. legumesfeuille Boolean
+   7. legumesgraine Boolean
+   8. aromatic Boolean
+   9. tubercule Boolean
+   10. bulbes Boolean
+   11. tiges
+
+
+
+
+
    4. eggs		Boolean
    5. milk		Boolean
    6. airborne		Boolean
