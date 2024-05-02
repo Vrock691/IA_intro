@@ -4,6 +4,11 @@ import re
 import csv 
 import random
 
+import dataset
+
+rawDatasetPath = "ProjetFinal/rawData/vegetables.data"
+dataset = dataset.generateDataset(rawDatasetPath)
+
 prompt = ""
 treeStep = 0
 print('IA > Je vais essayer de deviner à quel Framework JS vous pensez.')
@@ -13,7 +18,7 @@ while (prompt == ""):
     prompt = input("   > ")
     
     # Affichage de l'étape de l'arbre
-    printTreeStep(treeStep)
+    
 
     # Fin de la boucle
     prompt = ""

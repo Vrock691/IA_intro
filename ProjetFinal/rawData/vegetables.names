@@ -22,17 +22,17 @@
    1.    name              String (Unique for each instance)
    2.    green		         Boolean
    3.    root		         Boolean
-   4.    legumesfleurs     Boolean
-   5.    legumesfruits     Boolean
-   6.    legumesfeuille    Boolean
-   7.    legumesgraine     Boolean
+   4.    flower            Boolean
+   5.    fruit             Boolean
+   6.    leaf              Boolean
+   7.    seed              Boolean
    8.    aromatic          Boolean
-   9.    tubercule         Boolean
-   10.   bulbes            Boolean
-   11.   tiges             Boolean
+   9.    tuber             Boolean
+   10.   bulb              Boolean
+   11.   stems             Boolean
    12.   white             Boolean
    13.   orange            Boolean
-   14.   saison            Numeric (integer values in range [1,4])
+   14.   season            Numeric (integer values in range [1,4])
 
 8. Missing Attribute Values: None
 
