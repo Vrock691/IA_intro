@@ -9,37 +9,17 @@
    -- No past usage known
 
 4. Relevant Information:
-   -- A simple database containing XX Boolean-valued attributes.  The "type"
-      attribute appears to be the class attribute. These are the classes available in vegetables.data :
+   -- A simple database containing 12 Boolean-valued attributes and 1 numeric.  
+      The "name" attribute appears to be the class attribute.
 
-      Class# Set of vegetables:
-      ====== ===============================================================
-           1 (41) aardvark, antelope, bear, boar, buffalo, calf,
-                  cavy, cheetah, deer, dolphin, elephant,
-                  fruitbat, giraffe, girl, goat, gorilla, hamster,
-                  hare, leopard, lion, lynx, mink, mole, mongoose,
-                  opossum, oryx, platypus, polecat, pony,
-                  porpoise, puma, pussycat, raccoon, reindeer,
-                  seal, sealion, squirrel, vampire, vole, wallaby,wolf
-           2 (20) chicken, crow, dove, duck, flamingo, gull, hawk,
-                  kiwi, lark, ostrich, parakeet, penguin, pheasant,
-                  rhea, skimmer, skua, sparrow, swan, vulture, wren
-           3 (5)  pitviper, seasnake, slowworm, tortoise, tuatara 
-           4 (13) bass, carp, catfish, chub, dogfish, haddock,
-                  herring, pike, piranha, seahorse, sole, stingray, tuna
-           5 (4)  frog, frog, newt, toad 
-           6 (8)  flea, gnat, honeybee, housefly, ladybird, moth, termite, wasp
-           7 (10) clam, crab, crayfish, lobster, octopus,
-                  scorpion, seawasp, slug, starfish, worm
+5. Number of Instances: 51
 
-5. Number of Instances: XX
-
-6. Number of Attributes: XX (vegetable name, XX Boolean attributes, XX numerics)
+6. Number of Attributes: 14 (1 String, 12 Booleans, 1 numeric)
 
 7. Attribute Information: (name of attribute and type of value domain)
 
    [id]  [label]           [value type]  
-   1.    vegetable         String (Unique for each instance)
+   1.    name              String (Unique for each instance)
    2.    green		         Boolean
    3.    root		         Boolean
    4.    legumesfleurs     Boolean
@@ -53,18 +33,6 @@
    12.   white             Boolean
    13.   orange            Boolean
    14.   saison            Numeric (integer values in range [1,4])
-   15.   
-   16.
-   17.
-   18.
-
-
-
-  14. legs		Numeric (set of values: {0,2,4,5,6,8})
-  15. tail		Boolean
-  16. domestic		Boolean
-  17. catsize		Boolean
-  18. type		Numeric (integer values in range [1,7])
 
 8. Missing Attribute Values: None
 
