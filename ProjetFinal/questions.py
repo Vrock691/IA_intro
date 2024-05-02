@@ -1,27 +1,31 @@
 questionsAvailables = [
     {
-        "id": 0,
+        "id": 1,
         "message": "A quelle saison votre légume est il majoritairement rattaché ?",
         "attribute": "season",
         "responsesAvailables": {
             "printemps": {
-                "value": 1,
-                "eliminate": [0],
+                "query": "season == 1",
+                "drop": None,
+                "eliminate": [1],
                 "fatal": False,
             },
             "été|ete": {
-                "value": 2,
-                "eliminate": [0],
+                "query": "season == 2",
+                "drop": None,
+                "eliminate": [1],
                 "fatal": False,
             },
             "automne": {
-                "value": 3,
-                "eliminate": [0],
+                "query": "season == 3",
+                "drop": None,
+                "eliminate": [1],
                 "fatal": False,
             },
             "hiver": {
-                "value": 4,
-                "eliminate": [0],
+                "query": "season == 4",
+                "drop": None,
+                "eliminate": [1],
                 "fatal": False,
             },
         },
