@@ -1,0 +1,52 @@
+                   green  root  flower  fruit  leaf  seed  aromatic  tuber  bulb  stems  white  orange  season
+Ail                     0     0       0      0     0     0         1      0     0      0      1       0       4
+Artichaut               1     0       1      0     0     0         0      0     0      0      0       0       3
+Asperge blanche         0     0       0      0     0     0         0      0     0      1      1       0       1
+Asperge verte           1     0       0      0     0     0         0      0     0      0      1       0       0
+Aubergine               0     0       0      1     0     0         0      0     0      0      0       0       0
+Bette                   1     0       0      0     1     0         0      0     0      0      0       0       1
+Betterave rouge         0     1       0      0     0     0         0      0     0      0      0       0       3
+Brocoli                 1     0       1      0     0     0         0      0     0      0      0       0       3
+Carotte                 0     1       0      0     0     0         0      0     0      0      0       1       1
+Catalonia               1     0       0      0     0     0         0      0     0      0      0       0       1
+Céleri                  1     0       0      0     0     0         1      0     0      1      0       0       1
+Céleri branche          1     0       0      0     0     0         0      0     0      1      0       0       1
+Céleri rave             0     1       0      0     0     0         0      0     0      1      0       0       4
+Chou blanc              0     0       0      0     1     0         0      0     0      0      1       0       4
+Chou de Bruxelles       1     0       0      0     1     0         0      0     0      0      0       0       3
+Chou frisé              1     0       0      0     0     0         0      0     0      0      0       0       4
+Chou Romanesco          1     0       0      0     0     0         0      0     0      0      0       0       4
+Chou rouge              0     0       0      0     0     0         0      0     0      0      0       0       4
+Chou-chinois            1     0       0      0     1     0         0      0     0      0      0       0       4
+Chou-fleur              0     0       1      0     0     0         0      0     0      0      1       0       3
+Chou-rave               0     1       0      0     0     0         0      0     0      0      0       0       3
+Cima di Rapa            1     0       0      0     0     0         0      0     0      0      0       0       1
+Citrouille              0     0       0      1     0     0         0      0     0      0      0       1       4
+Concombre               1     0       0      1     0     0         0      0     0      0      0       0       2
+Courge                  0     0       0      1     0     0         0      0     0      0      0       1       3
+Courgette               1     0       0      1     0     0         0      0     0      0      0       0       2
+Cresson                 1     0       0      0     1     0         1      0     0      0      0       0       1
+Endive                  1     0       0      0     1     0         0      0     0      0      0       0       3
+Epinard                 1     0       0      0     0     0         0      0     0      0      0       0       1
+Fenouil                 1     0       0      0     0     0         1      0     0      0      1       0       3
+Haricot                 1     0       0      0     0     1         0      0     0      0      0       0       2
+Laitue romaine          1     0       0      0     1     0         0      0     0      0      0       0       1
+Mâche                   1     0       0      0     0     0         0      0     0      0      0       0       4
+Maïs                    0     0       0      0     0     0         0      0     0      0      0       0       2
+Navet                   0     1       0      0     0     0         0      0     0      0      1       0       1
+Oignon                  0     0       0      0     0     0         0      0     1      0      1       0       4
+Panais                  0     0       0      0     0     0         0      0     0      0      1       0       3
+Pâtisson                0     0       0      0     0     0         0      0     0      0      1       0       3
+Petit oignon blanc      0     0       0      0     0     0         0      0     0      0      1       0       3
+Petit pois              1     0       0      0     0     1         0      0     0      0      0       0       1
+Poireau                 1     0       0      0     0     0         0      0     0      1      1       0       3
+Pois mange-tout         1     0       0      1     0     0         0      0     0      0      0       0       2
+Poivron                 0     0       0      1     0     0         0      0     0      0      0       0       2
+Pomme de terre          0     1       0      0     0     0         0      1     0      0      0       0       4
+Potimarron              0     0       0      0     0     0         0      0     0      0      0       1       3
+Potiron                 0     0       0      0     0     0         0      0     0      0      0       1       3
+Radis                   0     1       0      0     0     0         0      0     0      0      0       0       1
+Radis long              0     1       0      0     0     0         0      0     0      0      0       0       1
+Rhubarbe                0     0       0      0     1     0         0      0     0      0      0       0       4
+Salsifis                0     0       0      0     0     0         0      0     0      0      1       0       3
+Topinambour             0     0       0      0     0     0         0      1     0      0      0       0       4

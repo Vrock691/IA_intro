@@ -2,29 +2,28 @@ import pandas as pd
 
 def generateDataset(rawDatasetPath):
     '''
-    definition: This function will convert the raw dataset stored in vegetables.data 
-                to a usable and fonctionnal pandas table.
-    input: The relative path of the raw dataset
-    output: Pandas Table
+    definition: Cette fonction converti le fichier .data en table pandas
+    input: Le chemin d'accès au fichier .data
+    output: Table panda
     '''
 
-    # Create the variables which will help to build the table
+    # Création des variables nécéssaire à la création de la table
     attributes = ["name","green","root","flower","fruit",
                   "leaf","seed","aromatic","tuber",
                   "bulb","stems","white","orange","season"]
     parsedInstancesName = []
     parsedValues = []
     
-    # Open the .data file
+    # Ouverture du fichier data
     rawData = open(rawDatasetPath, "r")
     lines = rawData.readlines()
 
-    # Get the instances in each line
+    # On obtient les instances pour chaque ligne
     for line in lines:
-        # Parse the instance's attribute values in a list
+        # On obtient les valeurs de l'instance parcouru
         values = line.split(',')
 
-        # Add the data in the variables
+        # Ajout des données dans les variables de création
         data = {}
         for i in range(len(attributes)):
             label = attributes[i]
@@ -34,6 +33,7 @@ def generateDataset(rawDatasetPath):
                 data[label] = int(values[i])
         parsedValues.append(data)
 
-    # Create and return the dataset
+    # Création et renvoie du dataset sous forme de tableau panda
     dataset = pd.DataFrame(parsedValues, index=parsedInstancesName)
+    print(dataset)
     return dataset

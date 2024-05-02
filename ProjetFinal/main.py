@@ -4,14 +4,15 @@ import re
 import csv 
 import random
 
+# Génération du dataset
 import dataset
-
-rawDatasetPath = "ProjetFinal/rawData/vegetables.data"
+rawDatasetPath = "ProjetFinal/rawDataset/vegetables.data"
 dataset = dataset.generateDataset(rawDatasetPath)
 
+# Début du script
 prompt = ""
 treeStep = 0
-print('IA > Je vais essayer de deviner à quel Framework JS vous pensez.')
+print('IA > Je vais essayer de deviner à quel légume vous pensez.')
 
 while (prompt == ""):
     # Début de la boucle
