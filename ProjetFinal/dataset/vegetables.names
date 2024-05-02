@@ -37,32 +37,29 @@
 6. Number of Attributes: XX (vegetable name, XX Boolean attributes, XX numerics)
 
 7. Attribute Information: (name of attribute and type of value domain)
-   1. vegetable name:      Unique for each instance
-   2. green		Boolean
-   3. root		Boolean
-   4. legumesfleurs Boolean
-   5. legumesfruits Boolean
-   6. legumesfeuille Boolean
-   7. legumesgraine Boolean
-   8. aromatic Boolean
-   9. tubercule Boolean
-   10. bulbes Boolean
-   11. tiges
+
+   [id]  [label]           [value type]  
+   1.    vegetable         String (Unique for each instance)
+   2.    green		         Boolean
+   3.    root		         Boolean
+   4.    legumesfleurs     Boolean
+   5.    legumesfruits     Boolean
+   6.    legumesfeuille    Boolean
+   7.    legumesgraine     Boolean
+   8.    aromatic          Boolean
+   9.    tubercule         Boolean
+   10.   bulbes            Boolean
+   11.   tiges             Boolean
+   12.   white             Boolean
+   13.   orange            Boolean
+   14.   saison            Numeric (integer values in range [1,4])
+   15.   
+   16.
+   17.
+   18.
 
 
 
-
-
-   4. eggs		Boolean
-   5. milk		Boolean
-   6. airborne		Boolean
-   7. aquatic		Boolean
-   8. predator		Boolean
-   9. toothed		Boolean
-  10. backbone		Boolean
-  11. breathes		Boolean
-  12. venomous		Boolean
-  13. fins		Boolean
   14. legs		Numeric (set of values: {0,2,4,5,6,8})
   15. tail		Boolean
   16. domestic		Boolean
