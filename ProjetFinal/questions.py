@@ -1,19 +1,29 @@
-questionsAvailable = [
+questionsAvailables = [
     {
         "id": 0,
-        "message": "Votre légume est-il majoritairement vert ?",
-        "yes": 0,
-        "yeseliminate": [1, 2],
-        "no": 0,
-        "noeliminate": None,
-        "attribute": ""
-    },
-    {
-        "id": 1,
-        "message": "Votre légume est-il majoritairement blanc ?",
-        "yes": 0,
-        "yeseliminate": [0, 2],
-        "no": 0,
-        "noeliminate": None
+        "message": "A quelle saison votre légume est il majoritairement rattaché ?",
+        "attribute": "season",
+        "responsesAvailables": {
+            "printemps": {
+                "value": 1,
+                "eliminate": [0],
+                "fatal": False,
+            },
+            "été|ete": {
+                "value": 2,
+                "eliminate": [0],
+                "fatal": False,
+            },
+            "automne": {
+                "value": 3,
+                "eliminate": [0],
+                "fatal": False,
+            },
+            "hiver": {
+                "value": 4,
+                "eliminate": [0],
+                "fatal": False,
+            },
+        },
     },
 ]
