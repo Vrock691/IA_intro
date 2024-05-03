@@ -1,0 +1,139 @@
+\documentclass{report}
+
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[letterpaper,top=3cm,bottom=3cm,left=4cm,right=4cm,marginparwidth=1.75cm]{geometry}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{Rapport - Projet Final - Introduction à l'IA}
+\author{Valentin MARY}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Cet article constitue le rapport à rendre pour le projet final du cours d'introduction à l'intelligence artificielle. Il détaille la solution proposée et les détails des tests la concernant.
+\end{abstract}
+
+\section{Introduction}
+
+Le projet demandé avait pour objectif le développement d'un chatbot qui devinerait un animal à partir de ses caractéristiques. Le robot doit alors poser un nombre minimal de question auquel l'utilisateur doit répondre par oui ou par non. 
+
+Exemple
+
+IA > L'animal auquel vous pensez est-il rouge ?
+
+R > Oui / Non
+
+Il était conseillé de mettre en place un arbre de décision et d'utiliser le module pandas pour construit ce robot. De plus, le modèle zoo (disponible sur Internet) était mis en exemple pour construire le base de données.
+
+\section{Solution proposée}
+
+\subsection{Réflexion sur la base de données}
+
+Sur le modèle de la base de données zoo, j'ai choisi de construire ma propre base de données sur un thème différent des animaux : les légumes. 
+
+Vous pouvez retrouver les caractéristiques du jeu de données et les données elles-mêmes dans le dossier /rawDataset.
+
+Le premier fichier dataset.names comprend la description du jeu de données, et le nom des attributs de chaque instance du set (chaque légume) avec leur type associé (booléen, chaîne de caractère ou numérique) 
+
+Les légumes (instances) pourront être identifiés grâce à ces 13 attributs : 
+\begin{enumerate}
+    \item[name] Le nom du légume, unique pour chaque instance, en chaîne de caractères
+    \item[green] Booléen vrai si le légume est majoritairement de couleur verte, faux sinon
+    \item[root] Booléen vrai si le légume est une racine, faux sinon
+    \item[flower] Booléen vrai si le légume est un légume-fleur, faux sinon
+    \item[fruit] Booléen vrai si le légume est un légume-fruit, faux sinon
+    \item[leaf] Booléen vrai si le légume est un légume-feuille, faux sinon
+    \item[seed] Booléen vrai si le légume est une graine, faux sinon
+    \item[aromatic] Booléen vrai si le légume est aromatique, faux sinon
+    \item[tuber] Booléen vrai si le légume est une tubercule, faux sinon
+    \item[bulb] Booléen vrai si le légume est un bulbe, faux sinon
+    \item[stems] Booléen vrai si le légume est une tige, faux sinon
+    \item[white] Booléen vrai si le légume est majoritairement de couleur blanche, faux sinon
+    \item[orange] Booléen vrai si le légume est majoritairement de couleur orange, faux sinon 
+    \item[season] Entier numérique compris entre 1 et 4 symbolisant les quatre saison, en commençant par le printemps. Le nombre étant la saison rattaché au légume. 
+\end{enumerate}
+
+51 instances sont disponibles dans le jeu de données. Elles sont listées dans le fichier dataset.data. Chaque ligne du fichier représente une instance, avec séparée par des virgules, les valeurs de leurs attributs dans l'ordre de la liste ci-dessus.
+
+\subsection{Réflexion sur les questions}
+
+Il existe une question pour chaque attribut, toute sont référencés dans le fichier questions.py sous forme d'un dictionnaire nommés questionsAvailables
+
+Chacune possède les caractéristiques suivantes : 
+\begin{enumerate}
+    \item[id] Un identifiant numérique unique de la question, en commençant par la question 1
+    \item[message] La question affichée par le bot, sous forme d'une chaîne de caractère
+    \item[attribute] L'attribut relié à la question : exemple white pour la question "Le légume est-il majoritairement blanc ?"
+    \item[responsesAvailables] La liste des réponses possibles, sous forme de dictionnaire.
+\end{enumerate}
+
+Chaque réponse possible dans responsesAvailables sont de la forme suivante :
+
+key: Expression régulière activant la réponse
+
+value: Dictionnaire avec les clés-valeurs suivantes
+\begin{enumerate}
+    \item[query] Action sur le dataset, ne garder que les valeurs qui répondent à la condition.
+    \item[drop] Action sur le dataset, supprimer une instance en particulier (un légume)
+    \item[eliminate] Action sur les questions déjà posés, si une question en induit une autre, on indique quel(s) attribut(s) est(sont) concerné(s) par cette conséquence dans une liste. 
+    \item[fatal] Condition d'arrêt de la boucle principale, si vrai, alors la réponse terminera le jeu. 
+\end{enumerate}
+
+\subsection{Création de l'algorithme}
+
+L'algorithme mis en place ne se base ni sur une solution naïve ni sur un arbre de décision pré-enregistré, mais sur une autre technique de recherche.
+
+Le procédé de recherche se déroule selon la boucle suivante :
+
+\begin{enumerate}
+    \item On regarde si les instances du dataset possèdent des valeurs qui divergent sur chacun de leur attribut. Dès qu'on trouve un attribut qui n'a pas encore été comparé, on cherche la question correspondante et on la pose à l'utilisateur.
+    Par exemple, si on trouve deux instances pour qui l'attribut white est à 0 et 1, et que la question correspondante n'a ni été posé, ni induite, alors on demande si la couleur du légume est majoritairement blanche.
+    \item Selon la réponse de l'utilisateur, on garde les données qui nous intéressent en éliminant toutes les instances du dataset qui ne correspondent pas aux critères. On enregistre la question et l'attribut comme posé, et on met à jour le dataset. et on reprend la boucle à l'étape ci-dessus.
+    \item Si la comparaison de l'étape 1 ne donne plus que des instances ayant les même caractéristiques, ou une seule instance, alors on pose la question sur l'instance spécifiquement : "Le légume est-il le suivante: Carotte ?" 
+    \item Quand l'utilisateur répond oui à cette question spécifique, alors le légume est trouvée et le jeu se termine, s'il répond non, alors on enlève l'instance du dataset. S'il ne reste aucune instance, alors le légume est inconnu du bot, et le programme se termine sur cette information.
+\end{enumerate}
+
+L'avantage de cette solution par rapport à une solution naïve est que les questions ne sont posées que si elles sont pertinentes, en effet si toutes les instances possèdent les mêmes valeurs pour le même attribut alors la question ne sera jamais posé. De même, si le résultat induit le résultat d'une autre alors l'autre ne sera jamais posé. C'est le cas pour les couleurs par exemple, si l'utilisateur répond oui à la question "Votre légume est-il majoritairement blanc ?" alors il ne peut pas être majoritairement orange, et la question concernant la couleur orange ne sera jamais posée.
+
+D'un autre côté, cette solution est également plus avantageuse qu'un arbre décisionnel, car il s'adapte au dataset et aux questions de l'utilisateur en temps réel. De plus, si des données viennent d'être rajoutées, il n'y a pas à reformer l'arbre de décision statique. Par dessus tout, cette solution était nettement moins chrono-phage à mettre en place, pour un résultat similaire.
+
+\subsection{Mise en place de l'algorithme}
+
+Cet algorithme est réparti à travers trois fichiers :
+\begin{itemize}
+    \item main.py
+    \item dataset.py
+    \item questionFinder.py
+\end{itemize}
+
+Le premier fichier main.py est le script principal qui contient la boucle principale. On y retrouve les instructions pour traiter la base de données, rechercher la meilleure question à poser à l'utilisateur, et traiter ses réponses. 
+
+Il appelle d'abord le fichier dataset.py, qui va transformer le dataset du format texte en un tableau panda avec en index, le nom de chaque instance. Chaque colonne du tableau se verra alors attribué un attribut par ordre d'apparition, les valeurs de chaque instance seront alors enregistré dans les cases de l'index correspondant dans chaque colonne correspondantes.
+
+Ensuite, le fichier questionFinder.py sera appelé pour trouver la meilleure question avec le dataset fourni. Si le dataset est vide alors cela signifie que le légume de l'utilisateur est inconnu. Dans le cas contraire, on effectue la comparaison des instances du dataset et on poursuit les étapes de l'algorithme explicité ci-dessus.
+
+Le fichier main.py va enfin afficher la question, comparer la réponse de l'utilisateur avec les expressions régulières des réponses disponibles. Puis quand une réponse valide sera entrée par l'utilisateur, le programme effectuera les actions requises sur le dataset et marquera la question comme posée. Et recommencera son cycle, à condition que la réponse n'ait pas été marquée comme fatal=true. 
+
+Pour plus d'indications, merci de vous référer aux commentaires inscrits dans le code source.
+
+\subsection{Processus de test}
+
+Afin de tester le programme, j'ai procédé en quatre étapes :
+
+\begin{enumerate}
+    \item Le test de la fonction generateDataset(). Il fallait vérifier que le tableau panda généré avait la bonne forme et qu'aucune donnée ne manquait. Ce qui fut chose faite.
+    \item Le test de la fonction findRelevantQuestion(), d'abord avec une question, puis avec deux, puis avec trois, etc.
+    \item Le test de la boucle principal et de chacune de ses actions, notamment celle sur le dataset, avec une base de données réduite, puis la base entière.
+    \item Le test du programme global pour trouver chaque légume. D'abord avec un dataset réduit, puis avec tout le dataset.
+\end{enumerate}
+
+Tous les légumes ont été trouvés. Et tous les motifs d'expression régulière ont été testés, y compris avec des motifs non-valides.
+
+\subsection{Conclusion - Améliorations possibles du programme}
+
+En conclusion, le programme pourrait être amélioré en augmentant le nombre d'instances du dataset et le nombre d'attributs, car il arrive régulièrement que le robot manque de données lors de l'utilisation. On pourrait également ajouter une fonction pour proposer à l'utilisateur de rajouter lui-même ses légumes si le robot ne trouve rien.
+
+\end{document}
