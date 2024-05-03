@@ -36,5 +36,5 @@ def generateDataset(rawDatasetPath):
 
     # Création et renvoie du dataset sous forme de tableau panda
     dataset = pd.DataFrame(parsedValues, index=parsedInstancesName)
-    print(dataset)
+    rawData.close()
     return dataset

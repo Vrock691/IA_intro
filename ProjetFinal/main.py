@@ -3,8 +3,8 @@ import questionFinder
 
 # Génération du dataset
 import dataset
-rawDatasetPath = "ProjetFinal/rawDataset/vegetables.data"
-dataset = dataset.generateDataset(rawDatasetPath)
+RAWDATASETPATH = "ProjetFinal/rawDataset/vegetables.data"
+dataset = dataset.generateDataset(RAWDATASETPATH)
 
 # Début du script
 PROMPT = ""
@@ -14,15 +14,12 @@ alreadyAskedQuestions = []
 alreadyReviewedAttributes = []
 
 # Début de la boucle
-while PROMPT == "":
-
-    print(dataset.head())
-    
+while PROMPT == "":    
     # Recherche de la question la plus pertinente
     question = questionFinder.findRelevantQuestion(dataset, alreadyAskedQuestions, alreadyReviewedAttributes)
     print("IA > " + question['message'])
 
-    # Attente de la réponse    
+    # Attente de la réponse
     PROMPT = input("   > ")
 
     # Comparaison de la réponse avec les motifs disponibles
@@ -32,23 +29,25 @@ while PROMPT == "":
         pattern = re.compile(regex)
         results = pattern.finditer(PROMPT.lower())
 
-        # Découverte des résultats en tant que liste 
+        # Découverte des résultats en tant que liste
         positions = [result.span() for result in results]
 
         # Si des occurences sont trouvés, on affiche la fonction correspondante
-        if (len(positions) > 0):
+        if len(positions) > 0:
 
             # On enregistre la question comme étant posée
             alreadyAskedQuestions.append(question)
             alreadyReviewedAttributes.append(question['attribute'])
+            if question["responsesAvailables"][regex]["eliminate"] is not None:
+                alreadyReviewedAttributes.extend(list(question["responsesAvailables"][regex]["eliminate"])) # On élimine les autres questions liés
 
             # Si une action de tri query est requise, on l'effectue
-            if (question["responsesAvailables"][regex]["query"] is not None):
+            if question["responsesAvailables"][regex]["query"] is not None:
                 newdataset = dataset.query(question["responsesAvailables"][regex]["query"])
                 dataset = newdataset
 
             # Si une action de suppression est requise, on l'effectue
-            if (question["responsesAvailables"][regex]["drop"] is not None):
+            if question["responsesAvailables"][regex]["drop"] is not None:
                 newdataset = dataset.drop(index=question["responsesAvailables"][regex]["drop"])
                 dataset = newdataset
 
