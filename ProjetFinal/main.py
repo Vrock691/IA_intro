@@ -14,7 +14,7 @@ alreadyAskedQuestions = []
 alreadyReviewedAttributes = []
 
 # Début de la boucle
-while PROMPT == "":    
+while PROMPT != None:    
     # Recherche de la question la plus pertinente
     question = questionFinder.findRelevantQuestion(dataset, alreadyAskedQuestions, alreadyReviewedAttributes)
     print("IA > " + question['message'])
@@ -27,7 +27,7 @@ while PROMPT == "":
 
         # Établissement d'un motif regex
         pattern = re.compile(regex)
-        results = pattern.finditer(PROMPT.lower())
+        results = pattern.finditer(str(PROMPT).lower())
 
         # Découverte des résultats en tant que liste
         positions = [result.span() for result in results]
@@ -52,7 +52,7 @@ while PROMPT == "":
                 dataset = newdataset
 
             # Fin de la boucle
-            if question["responsesAvailables"][regex]['fatal'] is not True:
-                PROMPT = ""
+            if question["responsesAvailables"][regex]['fatal'] is True:
+                PROMPT = None
 
 print("Merci d'avoir joué !")
